@@ -21,7 +21,16 @@ class ITunesContainer extends Component {
   searchArtists = query => {
     API.search(query)
       .then(res => this.setState({ result: res.data }))
+      .then(res => console.log(res))
+    //   .then(console.log(result))
       .catch(err => console.log(err));
+  };
+
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    this.searchArtists(this.state.search);
+    // console.log(`collectionName:${results.collectionName}`);
   };
 
   render() {
@@ -44,7 +53,7 @@ class ITunesContainer extends Component {
           <Col size="md-4">
             <Card heading="Search">
               <SearchForm
-                value={this.state.search}
+                defaultValue={this.state.search}
                 handleInputChange={this.handleInputChange}
                 handleFormSubmit={this.handleFormSubmit}
               />
