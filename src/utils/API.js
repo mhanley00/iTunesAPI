@@ -6,6 +6,8 @@ const ALBUM = "&entity=album"
 export default {
   search: function(query) {
     // return axios.get(BASEURL + query);
-    return axios.get(BASEURL + query + ALBUM);
+    return axios.get(BASEURL + query + ALBUM)
+    .then(function(response){console.log(response.data.results);
+    return response.data.results});
   }
 };

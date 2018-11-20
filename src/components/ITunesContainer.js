@@ -16,16 +16,22 @@ class ITunesContainer extends Component {
 
   componentDidMount() {
     this.searchArtists("jack+johnson");
+  
   }
 
   searchArtists = query => {
     API.search(query)
-      .then(res => this.setState({ result: res.data }))
-      .then(res => console.log(res))
-    //   .then(console.log(result))
+      .then(res => this.setState({ result: res }))
       .catch(err => console.log(err));
   };
 
+  handleInputChange = event => {
+      const value = event.target.value;
+      const name = event.target.name;
+      this.setState({
+          [name]: value
+      });
+  };
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -38,9 +44,11 @@ class ITunesContainer extends Component {
       <Container>
         <Row>
           <Col size="md-8">
+          
             <Card
-              heading={this.state.result.Title || "Albums"}
+              heading={this.state.result.collectionCensoredName || "Albums"}
             >
+          
               <AlbumDetail
                 title={this.state.result.collectionName}
                 src={this.state.result.artworkUrl100}
@@ -48,6 +56,7 @@ class ITunesContainer extends Component {
                 genre={this.state.result.primaryGenreName}
                 released={this.state.result.releaseDate}
               />
+              
             </Card>
           </Col>
           <Col size="md-4">
