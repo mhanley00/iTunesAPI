@@ -6,6 +6,7 @@ import Card from "./Card";
 import SearchForm from "./SearchForm";
 import AlbumDetail from "./AlbumDetail";
 import API from "../utils/API";
+import "./ITunesContainer.css";
 
 class ITunesContainer extends Component {
   state = {
@@ -43,8 +44,18 @@ class ITunesContainer extends Component {
     return (
       <Container>
         <Row>
+        <Col size="md-8">
+            <Card heading="iTunes Artist Search">
+              <SearchForm
+                defaultValue={this.state.search}
+                handleInputChange={this.handleInputChange}
+                handleFormSubmit={this.handleFormSubmit}
+              />
+          </Card>
+        </Col>
+        </Row>
+        <Row>
           <Col size="md-8">
-
             {this.state.result.map((results, index) => (
               <Card
                 key={index}
@@ -63,15 +74,6 @@ class ITunesContainer extends Component {
               </Card>
             ))}
 
-          </Col>
-          <Col size="md-4">
-            <Card heading="Search">
-              <SearchForm
-                defaultValue={this.state.search}
-                handleInputChange={this.handleInputChange}
-                handleFormSubmit={this.handleFormSubmit}
-              />
-            </Card>
           </Col>
         </Row>
       </Container>

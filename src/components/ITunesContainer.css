@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster|Quicksand');
+
+h2, h4 {
+    font-family: 'Lobster', cursive;
+  }
+
+h2 {
+    background: -webkit-linear-gradient( rgba(0,0,260,.6), rgba(260,0,0,.8));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn {
+    font-family: 'Lobster', cursive !important;
+    color: white;
+    border: none;
+    background: linear-gradient(217deg, rgba(260,0,0,.8), rgba(255,0,0,0) 80%),
+                linear-gradient(336deg, rgba(0,0,260,.8), rgba(0,0,255,0) 80%);
+
+  }
+
+body {
+    font-family: 'Quicksand', sans-serif;
+
+  }
+.card {
+    margin: 0 auto; 
+    float: none; 
+    /* margin-bottom: 10px;  */
+}

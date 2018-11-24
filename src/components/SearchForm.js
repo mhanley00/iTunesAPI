@@ -3,18 +3,18 @@ import React from "react";
 const SearchForm = props => (
   <form>
     <div className="form-group">
-      <label htmlFor="search">Search:</label>
+      <h4>Find an Artist:</h4>
       <input
         onChange={props.handleInputChange}
         value={props.value}
         name="search"
         type="text"
         className="form-control"
-        placeholder="Find an Artist"
+        placeholder="Enter Artist Name"
         id="search"
       />
       <br />
-      <button onClick={props.handleFormSubmit} className="btn btn-primary">
+      <button onClick={props.handleFormSubmit} className="btn">
         Search
       </button>
     </div>
