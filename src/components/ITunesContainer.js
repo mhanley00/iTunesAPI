@@ -9,28 +9,28 @@ import API from "../utils/API";
 
 class ITunesContainer extends Component {
   state = {
-    result: {},
+    result: [],
     search: ""
   };
 
 
   componentDidMount() {
-    this.searchArtists("jack+johnson");
-  
+    this.searchArtists(this.state.search);
+
   }
 
   searchArtists = query => {
     API.search(query)
-      .then(res => this.setState({ result: res }))
+      .then(res => (this.setState({ result: res })))
       .catch(err => console.log(err));
   };
 
   handleInputChange = event => {
-      const value = event.target.value;
-      const name = event.target.name;
-      this.setState({
-          [name]: value
-      });
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState({
+      [name]: value
+    });
   };
 
   handleFormSubmit = event => {
@@ -44,20 +44,25 @@ class ITunesContainer extends Component {
       <Container>
         <Row>
           <Col size="md-8">
-          
-            <Card
-              heading={this.state.result.collectionCensoredName || "Albums"}
-            >
-          
-              <AlbumDetail
-                title={this.state.result.collectionName}
-                src={this.state.result.artworkUrl100}
-                artist={this.state.result.artistName}
-                genre={this.state.result.primaryGenreName}
-                released={this.state.result.releaseDate}
-              />
-              
-            </Card>
+
+            {this.state.result.map((results, index) => (
+              <Card
+                key={index}
+                heading={results.collectionCensoredName || "Albums"}
+              >
+
+                <AlbumDetail
+                  key={index}
+                  title={results.collectionName}
+                  src={results.artworkUrl100}
+                  artist={results.artistName}
+                  genre={results.primaryGenreName}
+                  released={results.releaseDate}
+                />
+
+              </Card>
+            ))}
+
           </Col>
           <Col size="md-4">
             <Card heading="Search">
