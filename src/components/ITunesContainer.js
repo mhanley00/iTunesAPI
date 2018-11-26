@@ -7,6 +7,7 @@ import SearchForm from "./SearchForm";
 import AlbumDetail from "./AlbumDetail";
 import API from "../utils/API";
 import "./ITunesContainer.css";
+// import Moment from react-moment;
 
 class ITunesContainer extends Component {
   state = {
@@ -26,7 +27,7 @@ class ITunesContainer extends Component {
       .catch(err => console.log(err));
   };
 
-  handleInputChange = event => {
+  handleInputChange = event => { 
     const value = event.target.value;
     const name = event.target.name;
     this.setState({
@@ -44,7 +45,7 @@ class ITunesContainer extends Component {
     return (
       <Container>
         <Row>
-        <Col size="md-8">
+        <Col size="md-10">
             <Card heading="iTunes Artist Search">
               <SearchForm
                 defaultValue={this.state.search}
@@ -55,7 +56,7 @@ class ITunesContainer extends Component {
         </Col>
         </Row>
         <Row>
-          <Col size="md-8">
+          <Col size="md-10">
             {this.state.result.map((results, index) => (
               <Card
                 key={index}

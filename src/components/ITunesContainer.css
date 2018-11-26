@@ -25,6 +25,7 @@ body {
   }
 .card {
     margin: 0 auto; 
-    float: none; 
-    /* margin-bottom: 10px;  */
+    /* float: none;  */
+    display:block
+    /* align-content: center !important; */
 }
